@@ -1,9 +1,20 @@
+import { Metadata } from "next";
 import React from "react";
+
 type Params = {
-  productId: string;
+  params: {
+    productId: string;
+  };
 };
 
-const ProductDetails = ({ params }: { params: Params }) => {
+// Dynamic Metadata
+export const generateMetadata = ({ params }: Params): Metadata => {
+  return {
+    title: `Product ${params.productId}`,
+  };
+};
+
+const ProductDetails = ({ params }: Params) => {
   // for specifying type you can write  :  `{params }: { params: { productId: string;} }`
   return (
     <div>
